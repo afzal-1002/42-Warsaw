@@ -2,6 +2,11 @@
 
 This repository serves as an index of all my projects completed at 42 Warsaw.
 
+## Repository Structure
+
+- [42 Cursus](42%20Cursus) contains the Common Core repositories.
+- [42 Pisciner](42%20Pisciner) contains the Piscine exercises and rush projects.
+
 ## Common Core
 
 | Project | Language | Repository | Status |
