@@ -111,7 +111,6 @@ This repository serves as an index of all the projects I have completed during m
 
 **Muhammad Afzal**
 
-- 🇵🇱 Polish Citizen
 - 🎓 Student at **42 Warsaw**
 - 🎓 Warsaw University of Technology
 - 💻 Software Developer
