@@ -15,7 +15,6 @@ void	error_end(void)
 {
 	printf("Unexpected end\n");
 }
-
 char	peek(void)
 {
 	return (*input);
@@ -99,3 +98,6 @@ int	main(int ac, char **av)
 // 1005    '+'
 // 1006    '1'
 // 1007    '\0'
+
+// 4+5+1 = 10
+// 4+5*2 = 14
