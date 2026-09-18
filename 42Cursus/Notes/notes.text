@@ -1,0 +1,33 @@
+#Shell File Permission 
+Symbolic Mode
+In symbolic mode, you specify the permission change by referencing the user category (owner, group, or others) and the permissions (read, write, or execute).
+    u: user (owner)
+    g: group
+    o: others
+    a: all (owner, group, others)
+Examples:
+chmod -R u+rwx test0
+chmod -R u=rx,g=,o=r test2 
+
+change group:
+chown mafzal:wheel1 test0 
+chgrp wheel1 test0
+
+
+Change date Time : 
+touch -t 06012047 test0
+touch -t 06012245 test2
+
+
+Steps to Create a Symbolic Link:
+ln -s <target> <link_name>
+ln file.txt hardlink.txt
+ln -s file.txt symlink.txt
+
+Change date for this link 
+touch -h -t 06012047 test6
+
+
+
+Set File Size:
+truncate -s <size> <filename>
