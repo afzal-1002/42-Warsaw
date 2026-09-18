@@ -1,0 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/30 00:00:00 by your_login        #+#    #+#             */
+/*   Updated: 2026/01/01 21:00:12 by mafzal           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/so_long_bonus.h"
+
+void	put_image(t_game *game, t_img img, int x, int y)
+{
+	mlx_put_image_to_window(game->mlx, game->win, img.img, x * TILE_SIZE, y
+		* TILE_SIZE);
+}
+
+void	render_enemies(t_game *game)
+{
+	t_enemy	*current;
+
+	current = game->enemies;
+	while (current)
+	{
+		put_image(game, game->enemy_img, current->x, current->y);
+		current = current->next;
+	}
+}
+
+void	render_tile(t_game *game, int x, int y)
+{
+	char	tile;
+
+	tile = game->map.grid[y][x];
+	put_image(game, game->floor, x, y);
+	if (tile == '1')
+		put_image(game, game->wall, x, y);
+	else if (tile == 'C')
+		put_image(game, game->collectible[game->current_frame], x, y);
+	else if (tile == 'E')
+	{
+		if (game->map.collected >= game->map.collectibles)
+			put_image(game, game->exit_open, x, y);
+		else
+			put_image(game, game->exit_closed, x, y);
+	}
+}
+
+void	render_move_counter(t_game *game)
+{
+	char	*moves_str;
+	char	*num_str;
+
+	num_str = ft_itoa(game->player.moves);
+	moves_str = ft_strjoin("Moves: ", num_str);
+	free(num_str);
+	mlx_string_put(game->mlx, game->win, 10, 20, 0xFFFFFF, moves_str);
+	free(moves_str);
+}
+
+void	render_map(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < game->map.height)
+	{
+		x = 0;
+		while (x < game->map.width)
+		{
+			render_tile(game, x, y);
+			x++;
+		}
+		y++;
+	}
+	render_enemies(game);
+	put_image(game, game->player_img[game->current_frame], game->player.x,
+		game->player.y);
+	render_move_counter(game);
+}

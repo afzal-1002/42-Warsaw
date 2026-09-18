@@ -1,0 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/04 21:12:06 by mafzal            #+#    #+#             */
+/*   Updated: 2025/11/25 12:18:15 by mafzal           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	unsigned char	*src;
+	size_t			i;
+
+	if (!s)
+		return (NULL);
+	src = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		src[i] = c;
+		i++;
+	}
+	return (src);
+}
